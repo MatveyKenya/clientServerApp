@@ -15,8 +15,17 @@ public class Server {
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()))){
 
                 System.out.println("New connection accepted");
+                out.println("Hi, Write your name:");
                 final String name = in.readLine();
-                System.out.printf("Hi %s, your port is %d%n", name, clientSocket.getPort());
+                out.printf("Hi %s, your port is %d%n", name, clientSocket.getPort());
+                out.println("Are you child? (yes/no)");
+
+                if (in.readLine().equals("yes")){
+                    out.printf("Welcome to the kids area, %s! Let's play!", name);
+                }else {
+                    out.printf("Welcome to the adult zone, %s! Have a good rest, or a good working day!", name);
+                }
+
 
         } catch (IOException e){
             e.printStackTrace();
